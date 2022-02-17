@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.apple',
     'home',
     'products',
+    'bag',
 ]
 
 MIDDLEWARE = [
@@ -80,6 +81,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # `allauth` needs this from django
                 'django.template.context_processors.request',
+                'bag.contexts.bag_contents'
             ],
         },
     },

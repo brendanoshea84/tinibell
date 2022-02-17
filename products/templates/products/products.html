@@ -31,8 +31,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p>{{ product.description }}</p>
-                    <a href="#" class="btn btn-primary">Add to bag</a>
-                    <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">Learn more</a>
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View Product</a>
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -60,7 +59,6 @@
         var cardsCount;
 
         var emptyMessage = document.getElementById("empty-message")
-        console.log(emptyMessage)
         
         let glutenToggle = false;
         let veganToggle = false;
