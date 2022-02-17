@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+{% endblock %}
 {% block content %}
     <!-- Control bar -->
     <div class="row"></div>
@@ -12,8 +16,17 @@
                 <button id="discontinued" class="btn btn-secondary">Discontinued</button>
             </div>
         </div>
+        <div class="row" id="empty-message">
+            <div class="col-12">
+                <h2>We're sorry, we don't have anything like that in the store.</h2>
+                <p>However, we'd love to hear from you! We can do custom orders in some cases.</p>
+                <a href="#">
+                    info@tinibell.com
+                </a>
+            </div>
+        </div>
         {% for product in products %}
-            <div class="card {% if product.vegan %}vegan{% endif %}{% if product.nut_free %} nut-free{% endif %}{% if product.gluten_free %} gluten-free{% endif %}{% if product.discontinued %} discontinued{% endif %}" style="width: 18rem;">
+            <div class="card{% if product.vegan %} vegan{% endif %}{% if product.nut_free %} nut-free{% endif %}{% if product.gluten_free %} gluten-free{% endif %}{% if product.discontinued %} discontinued{% endif %}" style="width: 18rem;">
                 <img class="card-img-top" src="/media/{{ product.image_1 }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
@@ -44,26 +57,31 @@
         var vegan = $(".vegan");
         var discontinued = $(".discontinued");
         var cards = $(".card");
+        var cardsCount;
 
-        let glutenToggle = false
-        let veganToggle = false
-        let nutToggle = false
-        let discontinuedToggle = false
+        var emptyMessage = document.getElementById("empty-message")
+        console.log(emptyMessage)
+        
+        let glutenToggle = false;
+        let veganToggle = false;
+        let nutToggle = false;
+        let discontinuedToggle = false;
 
         var refreshResults = function() {
             for (let i = 0;i < cards.length;i++) {
+                emptyMessage.style.display = "none";
                 cards[i].style.display = "block"
                 if (glutenToggle) {
                     if (cards[i].classList.contains("gluten-free")) {
                     } else {
-                        cards[i].style.display = "none"
+                        cards[i].style.display = "none";
                     }
                 }
 
                 if (veganToggle) {
                     if (cards[i].classList.contains("vegan")) {
                     } else {
-                        cards[i].style.display = "none"
+                        cards[i].style.display = "none";
                     }
                 }
 
@@ -80,6 +98,17 @@
                         cards[i].style.display = "none"
                     }
                 }
+            }
+
+            cardsCount = 0;
+            for (let i = 0;i < cards.length;i++) {
+                if (cards[i].style.display == "none") {
+                    cardsCount += 1;
+                }
+            }
+            
+            if (cardsCount >= cards.length) {
+                emptyMessage.style.display = "block";
             }
         }
 
