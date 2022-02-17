@@ -1,3 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
+    <!-- Control bar -->
+    <div class="row"></div>
+    <!-- Products -->
+    <div class="row">
+        {% for product in products %}
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ images.product }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <a href="#" class="btn btn-primary">Add to cart</a>
+                    <a href="#" class="btn btn-primary">Learn more</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

@@ -21,15 +21,17 @@ class Product(models.Model):
     description = models.CharField(max_length=255, blank=False, null=False)
 
     # Tools for admin to control site
-    featured = models.BooleanField(blank=False, null=False)
+    featured = models.BooleanField(default=False, blank=False, null=False)
     nmbr_remaining = models.IntegerField(blank=True, null=True)
-    discontinued = models.BooleanField(blank=False, null=False)
+    discontinued = models.BooleanField(default=False, blank=False, null=False)
 
     # For filtering by food sensitivity
-    vegan = models.BooleanField(blank=False, null=False)
-    gluten_free = models.BooleanField(blank=False, null=False)
-    nut_free = models.BooleanField(blank=False, null=False)
+    vegan = models.BooleanField(default=False, blank=False, null=False)
+    gluten_free = models.BooleanField(default=False, blank=False, null=False)
+    nut_free = models.BooleanField(default=False, blank=False, null=False)
 
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="uploads/")
+    default = models.BooleanField(default=False)
