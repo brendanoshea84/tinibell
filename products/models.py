@@ -30,8 +30,10 @@ class Product(models.Model):
     gluten_free = models.BooleanField(default=False, blank=False, null=False)
     nut_free = models.BooleanField(default=False, blank=False, null=False)
 
+    # Images
+    image_1 = models.ImageField(upload_to="uploads/", blank=True, null=True)
+    image_2 = models.ImageField(upload_to="uploads/", blank=True, null=True)
+    image_3 = models.ImageField(upload_to="uploads/", blank=True, null=True)
 
-class ProductImage(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="uploads/")
-    default = models.BooleanField(default=False)
+    def __str__(self):
+        return self.name

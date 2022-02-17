@@ -4,15 +4,134 @@
     <div class="row"></div>
     <!-- Products -->
     <div class="row">
+        <div class="row">
+            <div class="col-12">
+                <button id="gluten-free" class="btn btn-secondary">Gluten-Free</button>
+                <button id="vegan" class="btn btn-secondary">Vegan</button>
+                <button id="nut-free" class="btn btn-secondary">Nut-Free</button>
+                <button id="discontinued" class="btn btn-secondary">Discontinued</button>
+            </div>
+        </div>
         {% for product in products %}
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ images.product }}" alt="Card image cap">
+            <div class="card {% if product.vegan %}vegan{% endif %}{% if product.nut_free %} nut-free{% endif %}{% if product.gluten_free %} gluten-free{% endif %}{% if product.discontinued %} discontinued{% endif %}" style="width: 18rem;">
+                <img class="card-img-top" src="/media/{{ product.image_1 }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
-                    <a href="#" class="btn btn-primary">Learn more</a>
+                    <p>{{ product.description }}</p>
+                    <a href="#" class="btn btn-primary">Add to bag</a>
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">Learn more</a>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        {% if not product.gluten_free %}
+                            <i class="fas fa-bread-slice" data-toggle="tooltip" data-placement="bottom" title="This product contains wheat gluten."></i>
+                        {% endif %}
+                        {% if not product.nut_free %}
+                            <i class="fas fa-skull-crossbones" data-toggle="tooltip" data-placement="bottom" title="This product contains nuts or was processed closely with products containing nuts."></i>
+                        {% endif %}
+                        {% if not product.vegan %}
+                            <i class="fas fa-cheese" data-toggle="tooltip" data-placement="bottom" title="This product contains animal products."></i>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         {% endfor %}
     </div>
+    <script type="text/javascript">
+        // Get all the product categories
+        var nutFree = document.getElementsByClassName("nut-free")
+        var glutenFree = $(".gluten-free");
+        var vegan = $(".vegan");
+        var discontinued = $(".discontinued");
+        var cards = $(".card");
+
+        let glutenToggle = false
+        let veganToggle = false
+        let nutToggle = false
+        let discontinuedToggle = false
+
+        var refreshResults = function() {
+            for (let i = 0;i < cards.length;i++) {
+                cards[i].style.display = "block"
+                if (glutenToggle) {
+                    if (cards[i].classList.contains("gluten-free")) {
+                    } else {
+                        cards[i].style.display = "none"
+                    }
+                }
+
+                if (veganToggle) {
+                    if (cards[i].classList.contains("vegan")) {
+                    } else {
+                        cards[i].style.display = "none"
+                    }
+                }
+
+                if (nutToggle) {
+                    if (cards[i].classList.contains("nut-free")) {
+                    } else {
+                        cards[i].style.display = "none"
+                    }
+                }
+
+                if (discontinuedToggle) {
+                    if (cards[i].classList.contains("discontinued")) {
+                    } else {
+                        cards[i].style.display = "none"
+                    }
+                }
+            }
+        }
+
+        // Get the sorting buttons
+        $("#nut-free").on('click', function() {
+            if (event.target.classList.contains("btn-secondary")) {
+                event.target.classList.remove("btn-secondary")
+                event.target.classList.add("btn-primary")
+                nutToggle = true
+            } else {
+                event.target.classList.add("btn-secondary")
+                event.target.classList.remove("btn-primary")
+                nutToggle = false
+            }
+            refreshResults();
+        })
+        $("#gluten-free").on('click', function(event) {
+            if (event.target.classList.contains("btn-secondary")) {
+                event.target.classList.remove("btn-secondary")
+                event.target.classList.add("btn-primary")
+                glutenToggle = true
+            } else {
+                event.target.classList.add("btn-secondary")
+                event.target.classList.remove("btn-primary")
+                glutenToggle = false
+            }
+            refreshResults();
+        })
+        $("#vegan").on('click', function() {
+            if (event.target.classList.contains("btn-secondary")) {
+                event.target.classList.remove("btn-secondary")
+                event.target.classList.add("btn-primary")
+                veganToggle = true
+            } else {
+                event.target.classList.add("btn-secondary")
+                event.target.classList.remove("btn-primary")
+                veganToggle = false
+            }
+            refreshResults();
+        })
+        $("#discontinued").on('click', function() {
+            if (event.target.classList.contains("btn-secondary")) {
+                event.target.classList.remove("btn-secondary")
+                event.target.classList.add("btn-primary")
+                discontinuedToggle = true
+            } else {
+                event.target.classList.add("btn-secondary")
+                event.target.classList.remove("btn-primary")
+                discontinuedToggle = false
+            }
+            refreshResults();
+        })
+        
+    </script>
 {% endblock %}
