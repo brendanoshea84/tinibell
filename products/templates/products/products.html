@@ -65,7 +65,7 @@
         let glutenToggle = false;
         let veganToggle = false;
         let nutToggle = false;
-        let discontinuedToggle = false;
+        let discontinuedToggle = true;
 
         var refreshResults = function() {
             for (let i = 0;i < cards.length;i++) {
@@ -94,9 +94,10 @@
 
                 if (discontinuedToggle) {
                     if (cards[i].classList.contains("discontinued")) {
-                    } else {
-                        cards[i].style.display = "none"
+                        cards[i].style.display = "block"
                     }
+                } else if (cards[i].classList.contains("discontinued")) {
+                    cards[i].style.display = "none"
                 }
             }
 
