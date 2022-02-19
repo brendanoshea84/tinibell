@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h1>EVENTS</h1>
+{% for event in events %}
+    <img class="card-img-top img-fluid" src="/media/{{ event.image }}" alt="{{ product.name }}">
+    <h2>{{ event.name }}</h2>
+    <p>{{ event.description }}</p>
+{% endfor %}
+{% endblock %}
