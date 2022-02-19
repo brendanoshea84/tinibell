@@ -87,6 +87,8 @@ TEMPLATES = [
     },
 ]
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 WSGI_APPLICATION = 'tinibell.wsgi.application'
 
 

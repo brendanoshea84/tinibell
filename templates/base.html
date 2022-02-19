@@ -29,6 +29,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/803ce1ce3c.js" crossorigin="anonymous"></script>
         <script src="https://js.stripe.com/v3/"></script>
+        <script src="{% static 'js/base.js' %}"></script>
     {% endblock %}
 
     {% block extra_js %}
@@ -37,10 +38,24 @@
     <title>Tinibell Pastas {% block extra_title %} {% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top"></header>
+    <header class="container-fluid fixed-top"></header>   
     {% if messages %}
-        <div class="message-container"></div>
-    {% endif %}
+      <div class="message-container">
+          {% for message in messages %}
+              {% with message.level as level %}
+                  {% if level == 40 %}
+                      {% include 'includes/toasts/toast_error.html' %}
+                  {% elif level == 30 %}
+                      {% include 'includes/toasts/toast_warning.html' %}
+                  {% elif level == 25 %}
+                      {% include 'includes/toasts/toast_success.html' %}
+                  {% else %}
+                      {% include 'includes/toasts/toast_info.html' %}
+                  {% endif %}
+              {% endwith %}
+          {% endfor %}
+      </div>
+  {% endif %}
 
     {% block page_header %}
     {% endblock%}

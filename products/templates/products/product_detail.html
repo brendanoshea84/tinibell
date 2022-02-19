@@ -38,7 +38,7 @@
                                 </span>
                                 <span class="text-uppercase">Keep Shopping</span>
                             </a>
-                            <input type="submit" class="btn btn-primary" value="Add to Bag">
+                            <input type="submit" class="btn btn-primary" value="Add to Bag" id="add-btn">
                         </div>
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </div>
@@ -46,4 +46,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var toastTrigger = $('#add-btn');
+        var toastDiv = $('#toast');
+
+        if (toastTrigger) {
+            toastTrigger.on("click", function() {
+                var toast = new bootstrap.Toast(toastDiv)
+                toast.show()
+            })
+        }
+    </script>
 {% endblock %}
