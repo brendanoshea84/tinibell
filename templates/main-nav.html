@@ -21,17 +21,6 @@
             {% endif %}
         </div>
     </div>
-
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="toast">
-        <div class="toast-header">
-            <img src="" class="rounded me-2" alt="">
-            <strong class="me-auto">Tinibell</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-            Hello, world! This is a toast message.
-        </div>
-      </div>
     
     <a class="{% if total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link d-block" href="{% url 'view_bag' %}">
         <div class="text-center">
