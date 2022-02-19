@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import PickupLocation, Prices
 
-# Register your models here.
+
+admin.site.register(PickupLocation)
+admin.site.register(Prices)

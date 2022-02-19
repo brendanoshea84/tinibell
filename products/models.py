@@ -1,19 +1,6 @@
 from django.db import models
 from django.forms import BooleanField
 
-# Create your models here.
-"""
-product image
-name
-description
-price/lb
-nmbr_remaining
-discontinued
-vegan
-gluten_free
-nut_free
-"""
-
 class Product(models.Model):
     # Basic product information
     name = models.CharField(max_length=50, default="PRODUCT")
