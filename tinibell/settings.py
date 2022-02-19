@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.instagram',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.apple',
+    'crispy_forms',
     'home',
     'products',
     'bag',
