@@ -107,6 +107,14 @@
       <script>
         var toastDisplay = $('#toast')[0]
         var toast = new bootstrap.Toast(toastDisplay)
+        var toastTrigger = $('#add-btn');
+
+        if (toastTrigger) {
+            toastTrigger.on("click", function() {
+                var toast = new bootstrap.Toast(toastDiv)
+                toast.show()
+            })
+        }
         toast.show()
       </script>
     {% block postloadjs %}

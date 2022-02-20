@@ -2,10 +2,10 @@
 {% load static %}
 {% block content %}
 <div class="row">
-    <div class="col-3">
+    <div class="col-2">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'add_product' %}">Add Products</a>
+                <a class="nav-link" href="{% url 'add_product' %}">Add Products</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'update_product' %}">Update Products</a>
@@ -25,7 +25,7 @@
         </ul>
     </div>
 
-    <div class="col-9">
+    <div class="col-10 px-5">
         {% block cheese %}
         {% endblock %}
     </div>

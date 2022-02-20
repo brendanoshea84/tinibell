@@ -1,4 +1,27 @@
 {% extends 'big_cheese/big_cheese.html' %}
 {% block cheese %}
-<h1>That's some cheeeeeeese</h1>
+<div class="row">
+    {% for product in products %}
+        <div class="col-12 w-100 border border-dark my-1" id="{{ product.pk }}">
+            <div class="row">
+                <div class="col-6">
+                    <h5>{{ product.name }}</h5>
+                </div>
+                <div class="col-2">
+                    <p>{{ product.price }}/lb</p>
+                </div>
+                <div class="col-1">
+                    <a href="{% url 'submit_product' product.pk %}" name="{{ product.pk }}" class="btn btn-primary my-1">Update</a>
+                </div>
+                <div class="col-3">
+                    <p class="text-center align-middle">
+                        {% if product.discontinued %}
+                            Discontinued
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

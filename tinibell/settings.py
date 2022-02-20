@@ -86,6 +86,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'bag.contexts.bag_contents'
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
@@ -104,6 +108,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 # Password validation

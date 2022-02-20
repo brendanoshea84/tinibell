@@ -7,8 +7,8 @@ from events.models import Events
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('name', 'price', 'description', 'featured',
-                    'nmbr_remaining', 'discontinued',
+        fields = ('name', 'price', 'description',
+                    'nmbr_remaining', 'featured', 'discontinued',
                     'vegan', 'gluten_free', 'nut_free',
                     'image_1', 'image_2', 'image_3')
     
