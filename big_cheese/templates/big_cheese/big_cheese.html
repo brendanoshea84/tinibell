@@ -5,28 +5,29 @@
     <div class="col-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Add Products</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'add_product' %}">Add Products</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Update Products</a>
+                <a class="nav-link" href="{% url 'update_product' %}">Update Products</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Add Events</a>
+                <a class="nav-link" href="{% url 'add_event' %}">Add Events</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Update Events</a>
+                <a class="nav-link" href="{% url 'update_event' %}">Update Events</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Site Controls</a>
+                <a class="nav-link" href="{% url 'site_ctrl' %}">Site Controls</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">User Management</a>
+                <a class="nav-link" href="{% url 'user_mgmt' %}">User Management</a>
             </li>
         </ul>
     </div>
 
     <div class="col-9">
-
+        {% block cheese %}
+        {% endblock %}
     </div>
 </div>
 {% endblock %}
