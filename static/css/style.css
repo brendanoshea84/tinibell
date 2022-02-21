@@ -1,8 +1,12 @@
-html {
-    background: green;
+body {
+    background-color: #F4A127
 }
 
-* ------------------------------- bootstrap toasts */
+html {
+    background-color: white;
+}
+
+/* ------------------------------- bootstrap toasts */
 
 .message-container {
     position: fixed;
@@ -19,3 +23,39 @@ html {
     height: 4px;
 }
 
+/* -------------------------------- background colors */
+.bg-dorange {
+    background-color: #CA6702
+}
+
+.bg-orange {
+    background-color: #F4A127
+}
+
+.bg-beige {
+    background-color: #FFECB4
+}
+
+.bg-teal {
+    background-color: #75C8AE
+}
+
+/* ---------------------------------- splash page styling */
+
+.splash {
+    height:82vh;
+}
+
+.splash-content {
+    border-radius: 100px 0 0 100px;
+    border: #5A3D2B solid 20px;
+    border-right:none;
+}
+
+.splash-box {
+    border-radius: 100px
+}
+
+.h-88 {
+    height: 88% !important
+}

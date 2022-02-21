@@ -7,6 +7,7 @@ from django.contrib import messages
 def products(request):
     template = 'products/products.html'
     product = Product.objects.all()
+    
     context = {
         "products": product,
     }
@@ -17,7 +18,7 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-
+    print(product.image_1)
     context = {
         'product': product,
     }

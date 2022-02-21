@@ -3,7 +3,7 @@
 {% block cheese %}
     <div class="row">
         <div class="col-8">
-            <form id="update-form" action="{% url 'submit_product' product.pk %}" class="update-form" method="POST">
+            <form id="update-form" enctype="multipart/form-data" action="{% url 'submit_product' product.pk %}" class="update-form" method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <input type="hidden" id="form-pk" value="x">

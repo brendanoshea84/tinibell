@@ -14,9 +14,18 @@ from django.contrib import messages
 def add_product(request):
     template = 'big_cheese/add_product.html'
     form = ProductForm
+    product = Product
     context = {
         "form": form,
     }
+
+    if request.method == "POST":
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Damn, girl! You killin it!")
+        else:
+            messages.error(request, "Invalid field data.")
     return render(request, template, context)
 
 @staff_member_required
