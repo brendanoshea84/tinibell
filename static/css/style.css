@@ -53,9 +53,23 @@ html {
 }
 
 .splash-box {
-    border-radius: 100px
+    border-radius: 100px;
+    filter: 
+        drop-shadow(10px 10px 0px #ff87a3)
+        drop-shadow(10px 10px 0px #db6c4e) 
+        drop-shadow(10px 10px 0px #e05155) 
 }
 
-.h-88 {
-    height: 88% !important
+#carousel-main {
+    border-radius: 100px;
+}
+
+.carousel-img {
+    border-radius: 100px;
+    filter: drop-shadow(1px 1px 3px black);
+}
+
+.carousel-caption {
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 100px;
 }
