@@ -26,3 +26,20 @@ class ProductForm(forms.ModelForm):
         }
 
         self.fields['name'].widget.attrs['autofocus'] = True
+
+
+class EventsForm(forms.ModelForm):
+    class Meta:
+        model = Events
+        fields = ('name', 'label', 'description',
+                    'date', 'image_1')
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'name': "Event name",
+            "label": "Label for you",
+            'description': "Location/description",
+        }
+
+        self.fields['name'].widget.attrs['autofocus'] = True

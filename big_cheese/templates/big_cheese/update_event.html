@@ -1,4 +1,20 @@
 {% extends 'big_cheese/big_cheese.html' %}
 {% block cheese %}
-<h1>That's some cheeeeeeese</h1>
+<div class="row">
+    {% for event in events %}
+        <div class="col-12 w-100 border border-dark my-1" id="{{ product.pk }}">
+            <div class="row">
+                <div class="col-6">
+                    <h5>{{ event.name }}</h5>
+                </div>
+                <div class="col-2">
+                    <p>{{ event.description }}/lb</p>
+                </div>
+                <div class="col-1">
+                    <a href="{% url 'submit_event' event.pk %}" name="{{ event.pk }}" class="btn btn-primary my-1">Update</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

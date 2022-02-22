@@ -1,4 +1,3 @@
-
 {% extends 'big_cheese/big_cheese.html' %}
 {% block cheese %}
     <div class="row">
@@ -6,7 +5,6 @@
             <form id="update-form" enctype="multipart/form-data" action="{% url 'submit_product' product.pk %}" class="update-form" method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <input type="hidden" id="form-pk" value="x">
                 <button type="submit">SUBMIT</button>
             </form>
         </div>

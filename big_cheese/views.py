@@ -4,17 +4,14 @@ from django.contrib.admin.views.decorators import staff_member_required
 from .models import Prices, PickupLocation
 from products.models import Product
 from events.models import Events
-from .forms import ProductForm
+from .forms import ProductForm, EventsForm
 from django.contrib import messages
 
-
-# Create your views here.
 
 @staff_member_required
 def add_product(request):
     template = 'big_cheese/add_product.html'
     form = ProductForm
-    product = Product
     context = {
         "form": form,
     }
@@ -23,10 +20,11 @@ def add_product(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, "Damn, girl! You killin it!")
+            messages.success(request, "Damn, girl! That pasta smellin' good AF!")
         else:
             messages.error(request, "Invalid field data.")
     return render(request, template, context)
+
 
 @staff_member_required
 def update_product(request):
@@ -42,30 +40,6 @@ def update_product(request):
 
 
 @staff_member_required
-def add_event(request):
-
-    return render(request, 'big_cheese/add_event.html')
-
-
-@staff_member_required
-def update_event(request):
-
-    return render(request, 'big_cheese/update_event.html')
-
-
-@staff_member_required
-def site_ctrl(request):
-
-    return render(request, 'big_cheese/site_ctrl.html')
-
-
-@staff_member_required
-def user_mgmt(request):
-
-    return render(request, 'big_cheese/user_mgmt.html')
-
-
-@staff_member_required
 def submit_product(request, item_id):
 
     product = Product.objects.get(pk=item_id)
@@ -73,7 +47,7 @@ def submit_product(request, item_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            messages.success(request, "Damn, girl! You killin it!")
+            messages.success(request, "Everyone knows you killin it out here!")
         else:
             messages.error(request, "Invalid field data.")
     form = ProductForm(initial={
@@ -96,3 +70,67 @@ def submit_product(request, item_id):
     }
 
     return render(request, "big_cheese/submit_product.html", context)
+
+
+@staff_member_required
+def add_event(request):
+    template = 'big_cheese/add_event.html'
+    form = EventsForm
+    context = {
+        "form": form,
+    }
+
+    if request.method == "POST":
+        form = EventsForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "History shall smile upon events such as these.")
+        else:
+            messages.error(request, "Invalid field data.")
+    
+    return render(request, template, context)
+
+
+@staff_member_required
+def update_event(request):
+    events = Events.objects.all()
+    template = 'big_cheese/update_event.html'
+    context = {
+        "events": events,
+    }
+    return render(request, template, context)
+
+
+def submit_event(request, item_id):
+    event = Events.objects.get(pk=item_id)
+    template = "big_cheese/submit_event.html"
+    if request.method == "POST":
+        form = EventsForm(request.POST, request.FILES, instance=event)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Damn, girl! You killin it!")
+        else:
+            messages.error(request, "Invalid field data.")
+
+    form = ProductForm(initial={
+        "name": event.name,
+        "label": event.label,
+        "description": event.description,
+        "image_1": event.image_1,
+    })
+    context = {
+        "form": form,
+        "event": event,
+    }
+    return render(request, template, context)
+
+@staff_member_required
+def site_ctrl(request):
+
+    return render(request, 'big_cheese/site_ctrl.html')
+
+
+@staff_member_required
+def user_mgmt(request):
+
+    return render(request, 'big_cheese/user_mgmt.html')

@@ -2,10 +2,10 @@
 {% block cheese %}
     <div class="row">
         <div class="col-8">
-            <form id="update-form" action="{% url 'add_event' %}" class="update-form" method="POST" enctype="multipart/form-data">
+            <form id="update-form" enctype="multipart/form-data" action="{% url 'submit_event' event.pk %}" class="update-form" method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <button type="submit" class="btn btn-primary">SUBMIT</button>
+                <button type="submit">SUBMIT</button>
             </form>
         </div>
     </div>
