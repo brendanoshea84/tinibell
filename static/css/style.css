@@ -1,6 +1,9 @@
 html {
     background-color: white;
 }
+body {
+    height: 100vh;
+}
 
 /* ------------------------------- bootstrap toasts */
 
@@ -34,4 +37,15 @@ html {
 
 .bg-teal {
     background-color: #75C8AE
+}
+
+/* ------------------------------- Universal styling */
+.content {
+    border-radius: 100px 0 0 100px;
+    border: #5A3D2B solid 20px;
+    border-right:none;
+}
+
+body {
+    background-color: #F4A127
 }

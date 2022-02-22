@@ -1,12 +1,18 @@
 {% extends 'big_cheese/big_cheese.html' %}
 {% block cheese %}
-    <div class="row">
-        <div class="col-8">
-            <form id="update-form" action="{% url 'add_event' %}" class="update-form" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <button type="submit" class="btn btn-primary">SUBMIT</button>
-            </form>
+<div class="row splash">
+    <div class="col-12 bg-beige h-100 content">
+        <div class="row h-100 p-5">
+            <div class="row">
+                <div class="col-8">
+                    <form id="update-form" action="{% url 'add_event' %}" class="update-form" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-primary">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 {% endblock %}

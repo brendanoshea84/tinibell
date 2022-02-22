@@ -1,10 +1,20 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<h1>EVENTS</h1>
-{% for event in events %}
-    <img class="card-img-top img-fluid" src="/media/{{ event.image }}" alt="{{ product.name }}">
-    <h2>{{ event.name }}</h2>
-    <p>{{ event.description }}</p>
-{% endfor %}
+<div class="row splash">
+    <div class="col-1 bg-orange"></div>
+    <div class="col-11 bg-beige h-100 content">
+        <div class="row h-100 p-5">
+            <h1>EVENTS</h1>
+            {% for event in events %}
+                <div class="col-12">
+                <img class="card-img-top img-fluid" src="/media/{{ event.image }}" alt="{{ product.name }}">
+                <h2>{{ event.name }}</h2>
+                <p class="mx-3">{{ event.date|date:'M d, Y, H:i' }}</p>
+                <p>{{ event.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}

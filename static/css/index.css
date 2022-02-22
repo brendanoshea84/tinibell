@@ -1,17 +1,8 @@
 /* ---------------------------------- splash page styling */
-body {
-    background-color: #F4A127
-}
 
 
 .splash {
     height:82vh;
-}
-
-.splash-content {
-    border-radius: 100px 0 0 100px;
-    border: #5A3D2B solid 20px;
-    border-right:none;
 }
 
 .splash-box {

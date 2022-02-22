@@ -32,10 +32,12 @@ def update_product(request):
     products = Product.objects.all()
     products = products.order_by("discontinued")
     form = ProductForm
+
     context = {
         "form": form,
         "products": products,
     }
+
     return render(request, template, context)
 
 
@@ -93,35 +95,43 @@ def add_event(request):
 
 @staff_member_required
 def update_event(request):
+
     events = Events.objects.all()
     template = 'big_cheese/update_event.html'
+
     context = {
         "events": events,
     }
+
     return render(request, template, context)
 
 
 def submit_event(request, item_id):
+
     event = Events.objects.get(pk=item_id)
     template = "big_cheese/submit_event.html"
+
     if request.method == "POST":
         form = EventsForm(request.POST, request.FILES, instance=event)
         if form.is_valid():
             form.save()
-            messages.success(request, "Damn, girl! You killin it!")
+            messages.success(request, "Change is inevitible in these trying times.")
         else:
             messages.error(request, "Invalid field data.")
 
-    form = ProductForm(initial={
+    form = EventsForm(initial={
         "name": event.name,
         "label": event.label,
         "description": event.description,
         "image_1": event.image_1,
+        'date': event.date,
     })
+
     context = {
         "form": form,
         "event": event,
     }
+
     return render(request, template, context)
 
 @staff_member_required
