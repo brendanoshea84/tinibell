@@ -1,6 +1,6 @@
 from django import forms
 from .models import Prices, PickupLocation
-from products.models import Product
+from products.models import Product, Control
 from events.models import Events
 
 
@@ -43,3 +43,21 @@ class EventsForm(forms.ModelForm):
         }
 
         self.fields['name'].widget.attrs['autofocus'] = True
+
+class ControlForm(forms.ModelForm):
+    class Meta:
+        model = Control
+        fields = ('no_orders',)
+
+
+class PickupLocationForm(forms.ModelForm):
+    class Meta:
+        model = PickupLocation
+        fields = ("name", "label", "postcode", 
+                    "description", "town_or_city",
+                    "street_address1",
+                    "street_address2", "active",
+                    )
+
+    def __init(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)

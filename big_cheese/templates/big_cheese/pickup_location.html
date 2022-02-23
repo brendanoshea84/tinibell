@@ -1,0 +1,29 @@
+{% extends 'big_cheese/big_cheese.html' %}
+{% block cheese %}
+    <div class="row splash">
+        <div class="col-12 bg-beige h-100 content">
+            <div class="row h-100 p-5">
+                <div class="col-12 w-100 border border-dark my-1" id="">
+                    <div class="row">
+                        <a href="{% url 'add_location' %}" class="btn btn-primary">Add a new location</a>
+                    </div>
+                </div>
+                {% for location in locations %}
+                    <div class="col-12 w-100 border border-dark my-1" id="">
+                        <div class="row">
+                            <div class="col-2">
+                                <h5>{{ location.name }}</h5>
+                            </div>
+                            <div class="col-6">
+                                <p>{{ location.description }}</p>
+                            </div>
+                            <div class="col-1">
+                                <a href="{% url 'update_location' location.pk %}" name="" class="btn btn-primary my-1">Update</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

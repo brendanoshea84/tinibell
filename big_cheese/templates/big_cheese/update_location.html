@@ -3,11 +3,10 @@
     <div class="row splash">
         <div class="col-12 bg-beige h-100 content">
             <div class="row h-100 p-5">
-                <h2>Turn off all orders</h1>
-                <form id="update-form" action="{% url 'site_ctrl' %}" class="update-form" method="POST">
+                <form action="{% url 'update_location' location.pk %}" method="POST">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button class="btn btn-primary" type="submit">SUBMIT</button>
+                    <button class="btn btn-primary">SUBMIT</button>
                 </form>
             </div>
         </div>

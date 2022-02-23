@@ -24,3 +24,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+class Control(models.Model):
+    no_orders = models.BooleanField(default=False, blank=False, null=False)
