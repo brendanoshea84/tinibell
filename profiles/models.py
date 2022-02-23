@@ -10,7 +10,10 @@ class UserProfile(models.Model):
     delivery information and order history
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
+    default_gluten_free = models.BooleanField(default=False, blank=False, null=False)
+    default_nut_free = models.BooleanField(default=False, blank=False, null=False)
+    default_vegan = models.BooleanField(default=False, blank=False, null=False)
+    
     def __str__(self):
         return self.user.username
 

@@ -137,6 +137,15 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+EMAIL_BACKEND = 'django_o365mail.EmailBackend'
+EMAIL_HOST = "smtp.office365.com"
+EMAIL_PORT = "587"
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
+O365_MAIL_CLIENT_ID = '30eaa016-0c64-4d57-82f7-97390072e9bb'
+O365_MAIL_CLIENT_SECRET = os.getenv("MAIL_CLIENT_SECRET")
+O365_MAIL_TENANT_ID = os.getenv("MAIL_TENANT_ID")
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
