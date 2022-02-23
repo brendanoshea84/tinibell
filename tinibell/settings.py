@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'bag',
     'events',
     'big_cheese',
+    'profiles',
+    'checkout',
 ]
 
 MIDDLEWARE = [
