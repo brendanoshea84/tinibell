@@ -5,3 +5,6 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def profile(request):
     print("happidei")
+
+def order_history(request):
+    print("happidei")

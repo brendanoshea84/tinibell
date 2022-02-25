@@ -6,11 +6,16 @@
 }
 
 .splash-box {
+    padding:15px;
     border-radius: 100px;
     filter: 
         drop-shadow(10px 10px 0px #ff87a3)
         drop-shadow(10px 10px 0px #db6c4e) 
         drop-shadow(10px 10px 0px #e05155) 
+}
+
+#carouselExampleIndicators {
+    height:100%
 }
 
 #carousel-main {
@@ -20,9 +25,20 @@
 .carousel-img {
     border-radius: 100px;
     filter: drop-shadow(1px 1px 3px black);
+    object-fit: cover;
+    object-position:center;
+    height:inherit;
 }
 
 .carousel-caption {
     background-color: rgba(0,0,0,0.6);
     border-radius: 100px;
+}
+
+.carousel-inner {
+    height:100%
+}
+
+.carousel-item {
+    height:inherit;
 }

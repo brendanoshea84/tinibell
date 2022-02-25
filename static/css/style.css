@@ -2,7 +2,9 @@ html {
     background-color: white;
 }
 body {
-    height: 100vh;
+    min-height: 100vh;
+    background-color: #F4A127;
+    height: auto;
 }
 
 /* ------------------------------- bootstrap toasts */
@@ -46,6 +48,6 @@ body {
     border-right:none;
 }
 
-body {
-    background-color: #F4A127
+.remove-item, .update-link {
+    cursor: pointer;
 }

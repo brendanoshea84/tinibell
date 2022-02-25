@@ -1,6 +1,6 @@
 from django.http import HttpRequest
 from django.shortcuts import render, HttpResponse, get_object_or_404
-from .models import Product
+from .models import Product, Control
 from django.contrib import messages
 
 # Create your views here.
