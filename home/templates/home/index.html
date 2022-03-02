@@ -9,7 +9,7 @@
             <div class="col-1 bg-orange"></div>
             <div class="col-11 bg-beige h-100 content">
                 <div class="row h-100 p-5">
-                    <div class="col-9 bg-teal h-100 splash-box">
+                    <div class="col-9 bg-teal h-100 splash-box splash-main">
                         <div id="carousel-main" class="carousel carousel-fade slide h-100" data-bs-ride="carousel">
                             <div class="carousel-indicators">
                                 {% for product in products %}
@@ -53,9 +53,9 @@
                     </div>
                     <div class="col-3">
                         <div class="row h-100">
-                            <div class="col-12 bg-teal splash-box">
+                            <div class="col-12-l col-6-m bg-teal splash-box">
                             </div>
-                            <div class="col-12 bg-teal splash-box">
+                            <div class="col-12-l col-6-m bg-teal splash-box">
                             </div>
                         </div>
                     </div>
@@ -63,12 +63,12 @@
             </div>
         </div>
     <script>
-        /*var resize = function () {
-            var images = $('.carousel-img')
-            images.height(carousel.innerHeight() - 32)
+        var resize = function () {
+            var images = $('.splash-main')
+            images.width(carousel.innerHeight() + 40)
         }
-        var carousel = $(".carousel-inner");
+        var carousel = $(".splash-main");
         window.addEventListener('resize', resize)
-        window.addEventListener('load', resize)*/
+        window.addEventListener('load', resize)
     </script>
 {% endblock %}

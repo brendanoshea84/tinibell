@@ -23,6 +23,8 @@ load_dotenv()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
+STRIPE_PUBLIC_KEY = "pk_test_51KYVurB4McOmrhgSwWUwxc4IZdHWEMxxJhO0oUmXDWUn8tLbGAnhdG8NfX0ojXxjRv6dRCn1USOAk0osMmRkpPcA003d5wj9I6"
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -138,12 +140,15 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 EMAIL_BACKEND = 'django_o365mail.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = "smtp.office365.com"
 EMAIL_PORT = "587"
-EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_USER = "info@tinibell.com"
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_USE_TLS = True
 
-O365_MAIL_CLIENT_ID = '30eaa016-0c64-4d57-82f7-97390072e9bb'
+O365_MAIL_CLIENT_ID = 'd1873194-ba22-47fb-b67b-4b94f005c489'
 O365_MAIL_CLIENT_SECRET = os.getenv("MAIL_CLIENT_SECRET")
 O365_MAIL_TENANT_ID = os.getenv("MAIL_TENANT_ID")
 
