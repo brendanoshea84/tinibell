@@ -26,6 +26,6 @@ urlpatterns = [
     path('bag/', include('bag.urls')),
     path('big_cheese/', include('big_cheese.urls')),
     path('events/', include('events.urls')),
-    path('profiles/', include('profiles.urls')),
+    path('accounts/', include('profiles.urls')),
     path('checkout/', include('checkout.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

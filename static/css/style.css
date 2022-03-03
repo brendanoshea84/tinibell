@@ -51,3 +51,26 @@ body {
 .remove-item, .update-link {
     cursor: pointer;
 }
+
+
+#nav_endcap {
+    position:absolute;
+    top:0;
+    right:0;
+    border-radius: 0 0 100px 0;
+    border: #5A3D2B solid 20px;
+    border-top: none;
+    border-left: none;
+    z-index: 2;
+    height: 100px;
+    width: 100px;
+}
+
+#nav_endcap_under {
+    position:absolute;
+    top:0;
+    right:0;
+    z-index: 1;
+    height: 100px;
+    width: 100px;
+}

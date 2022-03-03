@@ -7,6 +7,7 @@ cryptography==36.0.1
 defusedxml==0.7.1
 Django==4.0.2
 django-allauth==0.48.0
+django-countries==7.3.1
 django-crispy-forms==1.14.0
 django-o365mail==1.0.1
 idna==3.3
@@ -27,6 +28,7 @@ soupsieve==2.3.1
 sqlparse==0.4.2
 stringcase==1.2.0
 stripe==2.66.0
+typing_extensions==4.1.1
 tzdata==2021.5
 tzlocal==4.1
 urllib3==1.26.8

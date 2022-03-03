@@ -4,50 +4,54 @@
     <link rel="stylesheet" href="{% static 'css/products.css' %}">
 {% endblock %}
 {% block content %}
-    <!-- Control bar -->
-    <div class="row"></div>
-    <!-- Products -->
-    <div class="row">
-        <div class="row">
-            <div class="col-12">
-                <button id="gluten-free" class="btn btn-secondary">Gluten-Free</button>
-                <button id="vegan" class="btn btn-secondary">Vegan</button>
-                <button id="nut-free" class="btn btn-secondary">Nut-Free</button>
-                <button id="discontinued" class="btn btn-secondary">Discontinued</button>
-            </div>
-        </div>
-        <div class="row" id="empty-message">
-            <div class="col-12">
-                <h2>We're sorry, we don't have anything like that in the store.</h2>
-                <p>However, we'd love to hear from you! We can do custom orders in some cases.</p>
-                <a href="#">
-                    info@tinibell.com
-                </a>
-            </div>
-        </div>
-        {% for product in products %}
-            <div class="card{% if product.vegan %} vegan{% endif %}{% if product.nut_free %} nut-free{% endif %}{% if product.gluten_free %} gluten-free{% endif %}{% if product.discontinued %} discontinued{% endif %}" style="width: 18rem;">
-                <img class="card-img-top" src="/media/{{ product.image_1 }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p>{{ product.description }}</p>
-                    <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View Product</a>
-                </div>
+    <div class="row splash">
+        <div class="col-1"></div>
+        <div class="col-11 bg-beige h-100 content">
+            <div class="row h-100 p-5">
                 <div class="row">
-                    <div class="col-12">
-                        {% if not product.gluten_free %}
-                            <i class="fas fa-bread-slice" data-toggle="tooltip" data-placement="bottom" title="This product contains wheat gluten."></i>
-                        {% endif %}
-                        {% if not product.nut_free %}
-                            <i class="fas fa-skull-crossbones" data-toggle="tooltip" data-placement="bottom" title="This product contains nuts or was processed closely with products containing nuts."></i>
-                        {% endif %}
-                        {% if not product.vegan %}
-                            <i class="fas fa-cheese" data-toggle="tooltip" data-placement="bottom" title="This product contains animal products."></i>
-                        {% endif %}
+                    <div class="row">
+                        <div class="col-12">
+                            <button id="gluten-free" class="btn btn-secondary">Gluten-Free</button>
+                            <button id="vegan" class="btn btn-secondary">Vegan</button>
+                            <button id="nut-free" class="btn btn-secondary">Nut-Free</button>
+                            <button id="discontinued" class="btn btn-secondary">Discontinued</button>
+                        </div>
                     </div>
+                    <div class="row" id="empty-message">
+                        <div class="col-12">
+                            <h2>We're sorry, we don't have anything like that in the store.</h2>
+                            <p>However, we'd love to hear from you! We can do custom orders in some cases.</p>
+                            <a href="#">
+                                info@tinibell.com
+                            </a>
+                        </div>
+                    </div>
+                    {% for product in products %}
+                        <div class="card{% if product.vegan %} vegan{% endif %}{% if product.nut_free %} nut-free{% endif %}{% if product.gluten_free %} gluten-free{% endif %}{% if product.discontinued %} discontinued{% endif %}" style="width: 18rem;">
+                            <img class="card-img-top" src="/media/{{ product.image_1 }}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p>{{ product.description }}</p>
+                                <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View Product</a>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    {% if not product.gluten_free %}
+                                        <i class="fas fa-bread-slice" data-toggle="tooltip" data-placement="bottom" title="This product contains wheat gluten."></i>
+                                    {% endif %}
+                                    {% if not product.nut_free %}
+                                        <i class="fas fa-skull-crossbones" data-toggle="tooltip" data-placement="bottom" title="This product contains nuts or was processed closely with products containing nuts."></i>
+                                    {% endif %}
+                                    {% if not product.vegan %}
+                                        <i class="fas fa-cheese" data-toggle="tooltip" data-placement="bottom" title="This product contains animal products."></i>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
-        {% endfor %}
+        </div>
     </div>
     <script type="text/javascript">
         // Get all the product categories
