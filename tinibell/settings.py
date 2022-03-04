@@ -31,7 +31,7 @@ STRIPE_CURRENCY = "USD"
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "tinibell.azurewebsites.net",
+    "tinibell.com",
 ]
 
 # Application definition
