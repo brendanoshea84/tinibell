@@ -11,7 +11,9 @@
     filter: 
         drop-shadow(10px 10px 0px #ff87a3)
         drop-shadow(10px 10px 0px #db6c4e) 
-        drop-shadow(10px 10px 0px #e05155) 
+        drop-shadow(10px 10px 0px #e05155); 
+    border: 2px solid black;
+    
 }
 
 #carouselExampleIndicators {
@@ -28,6 +30,7 @@
     object-fit: cover;
     object-position:center;
     height:inherit;
+    padding-left: 5.5%;
 }
 
 .carousel-caption {
@@ -36,7 +39,8 @@
 }
 
 .carousel-inner {
-    height:100%
+    height:100%;
+    
 }
 
 .carousel-item {

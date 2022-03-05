@@ -1,74 +1,80 @@
 {% extends "base.html" %}
 {% load static %}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}"> 
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 {% block content %}
-    <!-- Main content container-->
-        <div class="row splash">
-            <div class="col-1 bg-orange"></div>
-            <div class="col-11 bg-beige h-100 content">
-                <div class="row h-100 p-5">
-                    <div class="col-9 bg-teal h-100 splash-box splash-main">
-                        <div id="carousel-main" class="carousel carousel-fade slide h-100" data-bs-ride="carousel">
-                            <div class="carousel-indicators">
-                                {% for product in products %}
-                                    {% if forloop.first %}
-                                        <button type="button" data-bs-target="#carousel-main" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                    {% else %}
-                                        <button type="button" data-bs-target="#carousel-main" data-bs-slide-to="{{ forloop.counter0 }}" aria-label="Slide {{ loop.index }}"></button>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                            <div class="carousel-inner h-100">
-                                {% for product in products %}
-                                    {% if forloop.first %}
-                                    <div class="carousel-item p-3 active ">
-                                        <img src="/media/{{ product.image_1 }}" class="carousel-img" alt="{{ product.name }}">
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <h5>{{ product.name }}</h5>
-                                            <p>{{ product.description }}</p>
-                                        </div>
-                                    </div>
-                                    {% else %}
-                                    <div class="carousel-item p-3">
-                                        <img src="/media/{{ product.image_1 }}" class="carousel-img" alt="{{ product.name }}">
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <h5>{{ product.name }}</h5>
-                                            <p>{{ product.description }}</p>
-                                        </div>
-                                    </div>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
-                            </button>
-                          </div>
+<!-- Main content container-->
+<div class="row splash">
+    <div class="col-1 bg-orange"></div>
+    <div class="col-11 bg-beige h-100 content">
+        <div class="row h-100 p-5" style="justify-content: space-evenly;">
+            <div class="col-xs-12 col-md-9 bg-teal h-100 splash-box splash-main">
+                <div id="carousel-main" class="carousel carousel-fade slide h-100 " data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        {% for product in products %}
+                        {% if forloop.first %}
+                        <button type="button" data-bs-target="#carousel-main" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        {% else %}
+                        <button type="button" data-bs-target="#carousel-main" data-bs-slide-to="{{ forloop.counter0 }}"
+                            aria-label="Slide {{ loop.index }}"></button>
+                        {% endif %}
+                        {% endfor %}
                     </div>
-                    <div class="col-3">
-                        <div class="row h-100">
-                            <div class="col-12-l col-6-m bg-teal splash-box">
+                    <div class="carousel-inner h-100 pl-2">
+                        
+                            {% for product in products %}
+                            {% if forloop.first %}
+                            <div class="carousel-item p-3 active ">
+                                <img src="/media/{{ product.image_1 }}" class="carousel-img" alt="{{ product.name }}">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{ product.name }}</h5>
+                                    <p>{{ product.description }}</p>
+                                </div>
                             </div>
-                            <div class="col-12-l col-6-m bg-teal splash-box">
+                            {% else %}
+                            <div class="carousel-item p-3">
+                                <img src="/media/{{ product.image_1 }}" class="carousel-img" alt="{{ product.name }}">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{ product.name }}</h5>
+                                    <p>{{ product.description }}</p>
+                                </div>
                             </div>
-                        </div>
+                            {% endif %}
+                            {% endfor %}
+                        
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row h-100">
+                    <div class="col-12-l col-6-m bg-teal splash-box mb-md-1">
+                    </div>
+                    <div class="col-12-l col-6-m bg-teal splash-box mt-md-1">
                     </div>
                 </div>
             </div>
         </div>
-    <script>
-        var resize = function () {
-            var images = $('.splash-main')
-            images.width(carousel.innerHeight() + 40)
-        }
-        var carousel = $(".splash-main");
-        window.addEventListener('resize', resize)
-        window.addEventListener('load', resize)
-    </script>
+    </div>
+</div>
+<script>
+    var resize = function () {
+        var images = $('.splash-main')
+        images.width(carousel.innerHeight() + 40)
+    }
+    var carousel = $(".splash-main");
+    window.addEventListener('resize', resize)
+    window.addEventListener('load', resize)
+</script>
 {% endblock %}

@@ -1,124 +1,124 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
-    
-    {% block meta %}
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% endblock %}
 
-    {% block extra_meta %}
-    {% endblock %}
+<head>
 
-    {% block core_css %}
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Montserrat:wght@300&display=swap" rel="stylesheet">     
-    {% endblock %}
+  {% block meta %}
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% endblock %}
 
-    {% block extra_css %}
-    {% endblock %}
-    
-    {% block core_js %}
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/803ce1ce3c.js" crossorigin="anonymous"></script>
-        <script src="https://js.stripe.com/v3/"></script>
-        <script src="{% static 'js/base.js' %}"></script>
-    {% endblock %}
+  {% block extra_meta %}
+  {% endblock %}
 
-    {% block extra_js %}
-    {% endblock %}
-    
-    <title>Tinibell Pastas {% block extra_title %} {% endblock %}</title>
-  </head>
-  <body>
-    <header class="container-fluid fixed-top"></header>
+  {% block core_css %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Montserrat:wght@300&display=swap"
+    rel="stylesheet">
+  {% endblock %}
 
+  {% block extra_css %}
+  {% endblock %}
+
+  {% block core_js %}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/803ce1ce3c.js" crossorigin="anonymous"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="{% static 'js/base.js' %}"></script>
+  {% endblock %}
+
+  {% block extra_js %}
+  {% endblock %}
+
+  <title>Tinibell Pastas {% block extra_title %} {% endblock %}</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  <header class="container-fluid fixed-top"></header>
+  <div class="bg-orange">
     {% block page_header %}
     {% endblock%}
-    
+
     {% include 'main-nav.html' %}
 
     {% if messages %}
     <div class="message-container">
-        {% for message in messages %}
-            {% with message.level as level %}
-                {% if level == 40 %}
-                    {% include 'includes/toasts/toast_error.html' %}
-                {% elif level == 30 %}
-                    {% include 'includes/toasts/toast_warning.html' %}
-                {% elif level == 25 %}
-                    {% include 'includes/toasts/toast_success.html' %}
-                {% else %}
-                    {% include 'includes/toasts/toast_info.html' %}
-                {% endif %}
-            {% endwith %}
-        {% endfor %}
-      </div>
+      {% for message in messages %}
+      {% with message.level as level %}
+      {% if level == 40 %}
+      {% include 'includes/toasts/toast_error.html' %}
+      {% elif level == 30 %}
+      {% include 'includes/toasts/toast_warning.html' %}
+      {% elif level == 25 %}
+      {% include 'includes/toasts/toast_success.html' %}
+      {% else %}
+      {% include 'includes/toasts/toast_info.html' %}
+      {% endif %}
+      {% endwith %}
+      {% endfor %}
+    </div>
     {% endif %}
-    
+
     {% block content %}
     {% endblock%}
-        <!-- Footer: -->
-        <!-- Thanks to https://mdbootstrap.com/docs/standard/navigation/footer/ for the bones of this code -->
-        <footer class="bg-light text-center text-white">
-          <!-- Grid container -->
-          <div class="p-4 pb-0 bg-orange">
-              <!-- Section: Social media -->
-              <section class="">
-              <!-- Facebook -->
-              <a
-                  class="btn btn-primary btn-floating m-1"
-                  style="background-color: #3b5998;"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-facebook-f"></i
-              ></a>
 
-              <!-- Instagram -->
-              <a
-                  class="btn btn-primary btn-floating m-1"
-                  style="background-color: #ac2bac;"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-instagram"></i
-              ></a>
+  </div>
+  <!-- Footer: -->
+  <!-- Thanks to https://mdbootstrap.com/docs/standard/navigation/footer/ for the bones of this code -->
+  <footer class="bg-light text-center text-white footer mt-auto">
+    <!-- Grid container -->
+    <div class="p-4 pb-0 bg-orange">
+      <!-- Section: Social media -->
+      <section class="">
+        <!-- Facebook -->
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998;" href="#!" role="button"><i
+            class="fab fa-facebook-f"></i></a>
 
-              </section>
-              <!-- Section: Social media -->
-          </div>
-          <!-- Grid container -->
+        <!-- Instagram -->
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac;" href="#!" role="button"><i
+            class="fab fa-instagram"></i></a>
 
-          <!-- Copyright -->
-          <div class="text-center p-3 bg-dorange">
-              © 2020 Copyright:
-              <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-          </div>
-          <!-- Copyright -->
-        </footer>
-      <!-- Footer -->
-    
-      <script>
-        var toastDisplay = $('#toast')[0]
-        var toast = new bootstrap.Toast(toastDisplay)
-        var toastTrigger = $('#add-btn');
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
 
-        if (toastTrigger) {
-            toastTrigger.on("click", function() {
-                var toast = new bootstrap.Toast(toastDiv)
-                toast.show()
-            })
-        }
+    <!-- Copyright -->
+    <div class="text-center p-3 bg-dorange">
+      © 2020 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+  <script>
+    var toastDisplay = $('#toast')[0]
+    var toast = new bootstrap.Toast(toastDisplay)
+    var toastTrigger = $('#add-btn');
+
+    if (toastTrigger) {
+      toastTrigger.on("click", function () {
+        var toast = new bootstrap.Toast(toastDiv)
         toast.show()
-      </script>
-    {% block postloadjs %}
-    {% endblock%}
-  </body>
+      })
+    }
+    toast.show()
+  </script>
+  {% block postloadjs %}
+  {% endblock%}
+</body>
+
 </html>
